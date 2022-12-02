@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Liste Des Personnes";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+        @if(ViewBag.userID == null){
+
+            @foreach (var item in ViewBag.resultTable)
+            {
+                <div class="col mb-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="@item.Image" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.FirstName @item.LastName</h5>
+                            <p>Email : @item.Email</p>
+                            <p>Country : @item.Country</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }else{
+            @if (@ViewBag.resultTable == null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    Utilisateur introuvable ! <a href="/Personne/search" class="alert-link">Faire une autre Recherche</a>
+                </div>
+            }else{
+                <div class="col mb-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="@ViewBag.resultTable.Image" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@ViewBag.resultTable.FirstName @ViewBag.resultTable.LastName</h5>
+                            <p>Email : @ViewBag.resultTable.Email</p>
+                            <p>Country : @ViewBag.resultTable.Country</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+
+    </div>
+</div>

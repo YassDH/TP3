@@ -1,0 +1,18 @@
+﻿@model TP2.Models.FormData
+@{
+    ViewData["Title"] = "Rechercher une Personne";
+}
+<h1>@ViewData["Title"]</h1>
+
+@using (Html.BeginForm("SearchHandler", "Personne", FormMethod.Post))
+{
+    <label>First Name</label>
+    @Html.TextBoxFor(m=>m.firstName)
+    ;
+    <br />
+    <label>Country</label>
+    @Html.TextBoxFor(m=>m.country)
+    ;
+    <br />
+    <input type="submit" class="btn btn-primary" value="Search" />
+}
